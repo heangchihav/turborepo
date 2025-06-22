@@ -1,0 +1,28 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://lefthook.dev/configuration/
+#
+# pre-push:
+#   jobs:
+#     - name: packages audit
+#       tags:
+#         - frontend
+#         - security
+#       run: yarn audit
+#
+#     - name: gems audit
+#       tags:
+#         - backend
+#         - security
+#       run: bundle audit
+#
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      run: pnpm exec biome check {staged_files}
+      glob: "*.{js,ts,jsx,tsx,ts,cts,mts,cjs,mjs,jsx,tsx}"
+    biome-format:
+      run: pnpm exec biome format {staged_files} --write
+      glob: "*.{js,ts,jsx,tsx,ts,cts,mts,cjs,mjs,jsx,tsx}"

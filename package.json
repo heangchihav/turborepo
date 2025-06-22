@@ -4,11 +4,13 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "biome check .",
+    "format": "biome format . --write",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.0.4",
+    "lefthook": "^1.11.14",
     "prettier": "^3.5.3",
     "turbo": "^2.5.4",
     "typescript": "5.8.2"
